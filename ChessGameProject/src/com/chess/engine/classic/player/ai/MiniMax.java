@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import static com.chess.engine.classic.board.Move.*;
 
+@SuppressWarnings("deprecation")
 public final class MiniMax extends Observable implements MoveStrategy {
 
     private final BoardEvaluator evaluator;

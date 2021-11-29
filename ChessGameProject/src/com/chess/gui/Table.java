@@ -23,6 +23,7 @@ import java.util.List;
 import static javax.swing.JFrame.setDefaultLookAndFeelDecorated;
 import static javax.swing.SwingUtilities.*;
 
+@SuppressWarnings("deprecation")
 public final class Table extends Observable {
 
     private final JFrame gameFrame;
@@ -59,7 +60,7 @@ public final class Table extends Observable {
         this.boardDirection = BoardDirection.NORMAL;
         this.highlightLegalMoves = true;
 
-        this.pieceIconPath = "art/new/";
+        this.pieceIconPath = "Image/new/";
         this.gameHistoryPanel = new GameHistoryPanel();
         this.debugPanel = new DebugPanel();
         this.takenPiecesPanel = new TakenPiecesPanel();
@@ -273,28 +274,28 @@ public final class Table extends Observable {
 
 
         holyWarriorsMenuItem.addActionListener(e -> {
-            pieceIconPath = "art/holywarriors/";
+            pieceIconPath = "Image/holywarriors/";
             Table.get().getBoardPanel().drawBoard(chessBoard);
         });
         newMenuItem.addActionListener(e -> {
-            pieceIconPath = "art/new/";
+            pieceIconPath = "Image/new/";
             Table.get().getBoardPanel().drawBoard(chessBoard);
         });
 
 
 
         abstractMenMenuItem.addActionListener(e -> {
-            pieceIconPath = "art/simple/";
+            pieceIconPath = "Image/simple/";
             Table.get().getBoardPanel().drawBoard(chessBoard);
         });
 
         fancyMenMenuItem2.addActionListener(e -> {
-            pieceIconPath = "art/fancy2/";
+            pieceIconPath = "Image/fancy2/";
             Table.get().getBoardPanel().drawBoard(chessBoard);
         });
 
         fancyMenMenuItem.addActionListener(e -> {
-            pieceIconPath = "art/fancy/";
+            pieceIconPath = "Image/fancy/";
             Table.get().getBoardPanel().drawBoard(chessBoard);
         });
 

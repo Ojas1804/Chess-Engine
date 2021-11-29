@@ -14,7 +14,8 @@ import com.chess.engine.classic.board.Board;
 import com.chess.engine.classic.board.Move;
 import com.chess.gui.Table.MoveLog;
 
-class GameHistoryPanel extends JPanel {
+class GameHistoryPanel extends JPanel
+{
 
     private final DataModel model;
     private final JScrollPane scrollPane;

@@ -8,7 +8,9 @@ import java.util.Observer;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-class DebugPanel extends JPanel implements Observer {
+@SuppressWarnings("deprecation")
+class DebugPanel extends JPanel implements Observer
+{
 
     private static final Dimension CHAT_PANEL_DIMENSION = new Dimension(600, 150);
     private final JTextArea jTextArea;
