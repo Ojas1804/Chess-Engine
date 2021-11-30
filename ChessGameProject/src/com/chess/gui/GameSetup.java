@@ -9,17 +9,19 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class GameSetup extends JDialog {
-
-    private PlayerType whitePlayerType;
+class GameSetup extends JDialog
+{
+	private static final long serialVersionUID = 1L;
+	private PlayerType whitePlayerType;
     private PlayerType blackPlayerType;
     private JSpinner searchDepthSpinner;
 
     private static final String HUMAN_TEXT = "Human";
     private static final String COMPUTER_TEXT = "Computer";
 
-    GameSetup(final JFrame frame,
-              final boolean modal) {
+    
+    GameSetup(final JFrame frame, final boolean modal)
+    {
         super(frame, modal);
         final JPanel myPanel = new JPanel(new GridLayout(0, 1));
         final JRadioButton whiteHumanButton = new JRadioButton(HUMAN_TEXT);
@@ -51,21 +53,28 @@ class GameSetup extends JDialog {
         final JButton cancelButton = new JButton("Cancel");
         final JButton okButton = new JButton("OK");
 
-        okButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        okButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
                 whitePlayerType = whiteComputerButton.isSelected() ? PlayerType.COMPUTER : PlayerType.HUMAN;
                 blackPlayerType = blackComputerButton.isSelected() ? PlayerType.COMPUTER : PlayerType.HUMAN;
                 GameSetup.this.setVisible(false);
             }
         });
 
-        cancelButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        
+        cancelButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
                 System.out.println("Cancel");
                 GameSetup.this.setVisible(false);
             }
         });
 
+        
+        
         myPanel.add(cancelButton);
         myPanel.add(okButton);
 
@@ -73,30 +82,44 @@ class GameSetup extends JDialog {
         pack();
         setVisible(false);
     }
+    
+    
 
-    void promptUser() {
+    void promptUser()
+    {
         setVisible(true);
         repaint();
     }
 
-    boolean isAIPlayer(final Player player) {
-        if(player.getAlliance() == Alliance.WHITE) {
+    
+    
+    boolean isAIPlayer(final Player player)
+    {
+        if(player.getAlliance() == Alliance.WHITE)
+        {
             return getWhitePlayerType() == PlayerType.COMPUTER;
         }
         return getBlackPlayerType() == PlayerType.COMPUTER;
     }
 
-    PlayerType getWhitePlayerType() {
+    
+    
+    PlayerType getWhitePlayerType()
+    {
         return this.whitePlayerType;
     }
 
-    PlayerType getBlackPlayerType() {
+    
+    
+    PlayerType getBlackPlayerType()
+    {
         return this.blackPlayerType;
     }
 
-    private static JSpinner addLabeledSpinner(final Container c,
-                                              final String label,
-                                              final SpinnerModel model) {
+    
+    
+    private static JSpinner addLabeledSpinner(final Container c, final String label, final SpinnerModel model)
+    {
         final JLabel l = new JLabel(label);
         c.add(l);
         final JSpinner spinner = new JSpinner(model);
@@ -105,7 +128,10 @@ class GameSetup extends JDialog {
         return spinner;
     }
 
-    int getSearchDepth() {
+    
+    
+    int getSearchDepth()
+    {
         return (Integer)this.searchDepthSpinner.getValue();
     }
 }

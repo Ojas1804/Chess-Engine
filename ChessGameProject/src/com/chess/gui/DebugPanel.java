@@ -11,11 +11,14 @@ import javax.swing.JTextArea;
 @SuppressWarnings("deprecation")
 class DebugPanel extends JPanel implements Observer
 {
-
-    private static final Dimension CHAT_PANEL_DIMENSION = new Dimension(600, 150);
+	private static final long serialVersionUID = 1L;
+	private static final Dimension CHAT_PANEL_DIMENSION = new Dimension(600, 150);
     private final JTextArea jTextArea;
 
-    public DebugPanel() {
+    
+    
+    public DebugPanel()
+    {
         super(new BorderLayout());
         this.jTextArea = new JTextArea("");
         add(this.jTextArea);
@@ -24,13 +27,18 @@ class DebugPanel extends JPanel implements Observer
         setVisible(true);
     }
 
-    public void redo() {
+    
+    
+    public void redo()
+    {
         validate();
     }
 
+    
+    
     @Override
-    public void update(final Observable obs,
-                       final Object obj) {
+    public void update(final Observable obs, final Object obj)
+    {
         this.jTextArea.setText(obj.toString().trim());
         redo();
     }

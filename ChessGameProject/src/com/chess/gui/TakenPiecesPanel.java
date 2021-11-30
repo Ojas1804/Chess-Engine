@@ -23,8 +23,8 @@ import com.chess.engine.classic.pieces.Piece;
 import com.chess.gui.Table.MoveLog;
 import com.google.common.primitives.Ints;
 
-class TakenPiecesPanel extends JPanel {
-
+class TakenPiecesPanel extends JPanel
+{
     private final JPanel northPanel;
     private final JPanel southPanel;
 
@@ -33,7 +33,9 @@ class TakenPiecesPanel extends JPanel {
     private static final Dimension TAKEN_PIECES_PANEL_DIMENSION = new Dimension(40, 80);
     private static final EtchedBorder PANEL_BORDER = new EtchedBorder(EtchedBorder.RAISED);
 
-    public TakenPiecesPanel() {
+    
+    public TakenPiecesPanel()
+    {
         super(new BorderLayout());
         setBackground(Color.decode("0xFDF5E6"));
         setBorder(PANEL_BORDER);
@@ -46,42 +48,64 @@ class TakenPiecesPanel extends JPanel {
         setPreferredSize(TAKEN_PIECES_PANEL_DIMENSION);
     }
 
-    public void redo(final MoveLog moveLog) {
+    
+    
+    public void redo(final MoveLog moveLog)
+    {
         southPanel.removeAll();
         northPanel.removeAll();
         
         final List<Piece> whiteTakenPieces = new ArrayList<>();
         final List<Piece> blackTakenPieces = new ArrayList<>();
         
-        for(final Move move : moveLog.getMoves()) {
-            if(move.isAttack()) {
+        for(final Move move : moveLog.getMoves())
+        {
+            if(move.isAttack())
+            {
                 final Piece takenPiece = move.getAttackedPiece();
-                if(takenPiece.getPieceAllegiance().isWhite()) {
+                if(takenPiece.getPieceAllegiance().isWhite())
+                {
                     whiteTakenPieces.add(takenPiece);
-                } else if(takenPiece.getPieceAllegiance().isBlack()){
+                }
+                
+                else if(takenPiece.getPieceAllegiance().isBlack())
+                {
                     blackTakenPieces.add(takenPiece);
-                } else {
+                }
+                
+                else
+                {
                     throw new RuntimeException("Should not reach here!");
                 }
             }
         }
 
-        Collections.sort(whiteTakenPieces, new Comparator<Piece>() {
+        
+        
+        Collections.sort(whiteTakenPieces, new Comparator<Piece>()
+        {
             @Override
-            public int compare(final Piece p1, final Piece p2) {
+            public int compare(final Piece p1, final Piece p2)
+            {
                 return Ints.compare(p1.getPieceValue(), p2.getPieceValue());
             }
         });
 
-        Collections.sort(blackTakenPieces, new Comparator<Piece>() {
+        
+        
+        Collections.sort(blackTakenPieces, new Comparator<Piece>()
+        {
             @Override
-            public int compare(final Piece p1, final Piece p2) {
+            public int compare(final Piece p1, final Piece p2)
+            {
                 return Ints.compare(p1.getPieceValue(), p2.getPieceValue());
             }
         });
         
-        for (final Piece takenPiece : whiteTakenPieces) {
-            try {
+        for (final Piece takenPiece : whiteTakenPieces)
+        {
+            try
+            {
                 final BufferedImage image = ImageIO.read(new File("Image/holywarriors/"
                         + takenPiece.getPieceAllegiance().toString().substring(0, 1) + "" + takenPiece.toString()
                         + ".gif"));
@@ -90,13 +114,17 @@ class TakenPiecesPanel extends JPanel {
                         ic.getIconWidth() - 15, ic.getIconWidth() - 15, Image.SCALE_SMOOTH)));
                 this.southPanel.add(imageLabel);
             }
-            catch (final IOException e) {
+            
+            catch (final IOException e)
+            {
                 e.printStackTrace();
             }
         }
 
-        for (final Piece takenPiece : blackTakenPieces) {
-            try {
+        for (final Piece takenPiece : blackTakenPieces)
+        {
+            try
+            {
                 final BufferedImage image = ImageIO.read(new File("Image/holywarriors/"
                         + takenPiece.getPieceAllegiance().toString().substring(0, 1) + "" + takenPiece.toString()
                         + ".gif"));
@@ -105,7 +133,10 @@ class TakenPiecesPanel extends JPanel {
                         ic.getIconWidth() - 15, ic.getIconWidth() - 15, Image.SCALE_SMOOTH)));
                 this.northPanel.add(imageLabel);
 
-            } catch (final IOException e) {
+            }
+            
+            catch (final IOException e)
+            {
                 e.printStackTrace();
             }
         }
