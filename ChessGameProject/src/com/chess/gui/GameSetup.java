@@ -20,6 +20,7 @@ class GameSetup extends JDialog
     private static final String COMPUTER_TEXT = "Computer";
 
     
+    
     GameSetup(final JFrame frame, final boolean modal)
     {
         super(frame, modal);
@@ -47,12 +48,14 @@ class GameSetup extends JDialog
         myPanel.add(blackHumanButton);
         myPanel.add(blackComputerButton);
 
-        myPanel.add(new JLabel("Search"));
-        this.searchDepthSpinner = addLabeledSpinner(myPanel, "Search Depth", new SpinnerNumberModel(6, 0, Integer.MAX_VALUE, 1));
+        myPanel.add(new JLabel(""));
+        this.searchDepthSpinner = addLabeledSpinner(myPanel, "Search Depth", new SpinnerNumberModel(5, 0, Integer.MAX_VALUE, 1));
 
         final JButton cancelButton = new JButton("Cancel");
         final JButton okButton = new JButton("OK");
 
+        
+        
         okButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -62,7 +65,6 @@ class GameSetup extends JDialog
                 GameSetup.this.setVisible(false);
             }
         });
-
         
         cancelButton.addActionListener(new ActionListener()
         {
@@ -73,8 +75,6 @@ class GameSetup extends JDialog
             }
         });
 
-        
-        
         myPanel.add(cancelButton);
         myPanel.add(okButton);
 
@@ -82,9 +82,9 @@ class GameSetup extends JDialog
         pack();
         setVisible(false);
     }
-    
-    
 
+    
+    
     void promptUser()
     {
         setVisible(true);

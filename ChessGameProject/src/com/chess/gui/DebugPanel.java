@@ -42,5 +42,4 @@ class DebugPanel extends JPanel implements Observer
         this.jTextArea.setText(obj.toString().trim());
         redo();
     }
-
 }
